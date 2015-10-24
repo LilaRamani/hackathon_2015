@@ -4,7 +4,7 @@ html, body {
     padding: 0;
 }
 #map {
-    height: 300px;
+    height: 400px;
 }
 
 .location-search {
@@ -17,7 +17,6 @@ html, body {
     font-size: 15px;
     font-weight: 300;
     height: 29px;
-    margin-left: 17px;
     margin-top: 10px;
     outline: none;
     padding: 0 11px 0 13px;
@@ -27,4 +26,8 @@ html, body {
 
 .location-search:focus {
     border-color: #4d90fe;
+}
+
+.trip-builder-form {
+    padding-left: 17px;
 }

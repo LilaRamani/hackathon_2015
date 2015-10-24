@@ -5,16 +5,20 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="js/index-angular.js"></script>
 </head>
 <body ng-controller="tripWebCtrl as tripWeb">
-    <form class="trip-builder-form">
-        <h2>Build a Trip</h2>
-        <h3>Enter the places You went on your trip</h3>
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".trip-builder-form" aria-expanded="false" aria-controls="collapseExample">
+    Log a Trip
+</button>
+    <form class="collapse trip-builder-form">
+        <h3>Enter the places you went on your trip</h3>
         <div class="locations" ng-repeat="location in locations">
             <input class="location-search" type="text" placeholder="add a location" value="{{location.address}}">
         </div>

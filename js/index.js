@@ -8,8 +8,8 @@ var map;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -33.8688, lng: 151.2195},
-        zoom: 12
+        center: {lat: 42, lng: -80},
+        zoom: 5
     });
 
     addAutoCompleteToLastInput();
@@ -22,23 +22,19 @@ function addAutoCompleteToLastInput() {
 }
 
 $('.create-trip').click( function() {
-    console.log(ac_locations);
     var coordinates = Array();
     var loc;
-    console.log(ac_locations.length);
    for (var i = 0; i < ac_locations.length; i++) {
        var place = ac_locations[i].getPlace();
-       console.log(place);
        if (typeof(place) !== 'undefined') {
            loc = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
            var marker = new google.maps.Marker({
                map: map,
-               position: loc,
+               position: loc
            });
            coordinates.push(loc);
        }
    }
-    console.log(coordinates);
     var line = new google.maps.Polyline({
         path: coordinates,
         geodesic: true,
@@ -48,4 +44,18 @@ $('.create-trip').click( function() {
     });
     line.setMap(map);
     map.panTo(coordinates[0]);
+    resetTripForm();
 });
+
+function resetTripForm() {
+    $('.trip-builder-form').removeClass('in');
+    var first = true;
+    $('.trip-builder-form .location-search').each( function() {
+        if (first) {
+            $(this).val('');
+            first = false;
+        } else {
+            $(this).remove();
+        }
+    });
+}
