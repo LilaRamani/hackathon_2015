@@ -6,7 +6,7 @@ html, body {
 #map {
     height: 100%;
 }
-.controls {
+.location-search {
     background-color: #fff;
     border-radius: 2px;
     border: 1px solid transparent;
@@ -24,6 +24,6 @@ html, body {
     width: 400px;
 }
 
-.controls:focus {
+.location-search:focus {
     border-color: #4d90fe;
 }
