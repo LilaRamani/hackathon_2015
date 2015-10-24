@@ -3,6 +3,8 @@
 // the place ID and other information about the place that the user has
 // selected.
 
+var ac_locations = Array();
+
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -33.8688, lng: 151.2195},
@@ -10,11 +12,11 @@ function initMap() {
     });
 
     addAutoCompleteToAllInputs();
+
 }
 
 function addAutoCompleteToAllInputs() {
-    $('.trip-builder-form .location-search').each( function() {
-        var input = $(this)[0];
-        var autoComplete = new google.maps.places.Autocomplete(input);
-    });
+    var input = $('.trip-builder-form .location-search').last()[0];
+    var autoComplete = new google.maps.places.Autocomplete(input);
+    ac_locations.push(autoComplete);
 }
