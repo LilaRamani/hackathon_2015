@@ -9,10 +9,10 @@ function initMap() {
         zoom: 12
     });
 
-    initLocationAutoComplete();
+    addAutoCompleteToAllInputs();
 }
 
-function initLocationAutoComplete() {
+function addAutoCompleteToAllInputs() {
     $('.trip-builder-form .location-search').each( function() {
         var input = $(this)[0];
         var autoComplete = new google.maps.places.Autocomplete(input);

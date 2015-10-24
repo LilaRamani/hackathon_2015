@@ -3,9 +3,15 @@
  */
 
 // initialize AngularJS
-var rrApp = angular.module('tripWebApp', []);
+var tripWebApp = angular.module('tripWebApp', []);
 
-rrApp.controller('tripWebCtrl', function () {
-    var tripWeb = this;
-    tripWeb.hello = "WoRlD";
+tripWebApp.controller('tripWebCtrl', function ($scope) {
+    $scope.locations = [{address : ''}];
+    $scope.hello = 'world';
+    $scope.addLocation = function() {
+        $scope.locations.push({address : ''});
+        setTimeout(function() {
+            addAutoCompleteToAllInputs();
+        }, 700);
+    };
 });
