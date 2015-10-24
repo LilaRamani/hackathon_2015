@@ -11,7 +11,7 @@ tripWebApp.controller('tripWebCtrl', function ($scope) {
     $scope.addLocation = function() {
         $scope.locations.push({address : ''});
         setTimeout(function() {
-            addAutoCompleteToAllInputs();
+            addAutoCompleteToLastInput();
         }, 700);
     };
 });
