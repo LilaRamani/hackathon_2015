@@ -8,7 +8,7 @@ function initMap() {
     center: {lat: -33.8688, lng: 151.2195},
     zoom: 13
   });
-
+  MyLocation();
   var input = document.getElementById('pac-input');
 
   var autocomplete = new google.maps.places.Autocomplete(input);
@@ -45,9 +45,54 @@ function initMap() {
     });
     marker.setVisible(true);
 
+    drawPolylines(place);
+
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
         'Place ID: ' + place.place_id + '<br>' +
         place.formatted_address);
     infowindow.open(map, marker);
   });
 }
+
+function drawPolylines(place)
+{
+        var coordinates = [
+          new google.maps.LatLng(place.latitude, place.longitude),
+          me
+        ]; 
+        var polyline = new google.maps.Polyline({
+          path: coordinates,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+        polyline.setMap(map);
+}
+
+function MyLocation()
+{
+        if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                        myLat = position.coords.latitude;
+                        myLng = position.coords.longitude;
+                        renderMap();
+                });
+        }
+        else {
+                alert("Your Browser doesn't support geolocation");
+        }
+}
+function renderMap()
+{
+        me = new google.maps.LatLng(myLat, myLng);
+        map.panTo(me);
+        map.setZoom(6);
+        var image = 'small_blue_ball.png';
+        var marker = new google.maps.Marker({
+                position: me,
+                map: map,
+                icon: image
+        });
+}
+
